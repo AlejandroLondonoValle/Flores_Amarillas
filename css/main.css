@@ -10,6 +10,71 @@
   --dark-color: #000;
 }
 
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    max-width: 90%;      /* 🔥 ocupa máximo el 90% en pantallas pequeñas */
+    width: 600px;        /* 🔥 en pantallas grandes mantiene tamaño cómodo */
+    z-index: 1000;
+    display: none;
+    animation: fadeIn 0.5s ease;
+    overflow-y: auto;    /* 🔥 si el texto es muy largo permite scroll */
+    max-height: 90vh;    /* 🔥 nunca sobrepasa la pantalla */
+}
+
+.custom-alert h1 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 1.5;
+    word-wrap: break-word;  /* 🔥 evita que se partan palabras raras */
+}
+
+.custom-alert button {
+    background: #126ba6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    width: 100%;            /* 🔥 botón ocupa ancho en celular */
+    max-width: 200px;       /* 🔥 pero no gigante en pantallas grandes */
+}
+
+.custom-alert button:hover {
+    background: #0e5582;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* 📱 Ajustes especiales para celular */
+@media (max-width: 480px) {
+    .custom-alert {
+        font-size: 16px;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    .custom-alert h1 {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+}
+
 body {
   display: flex;
   align-items: flex-end;
